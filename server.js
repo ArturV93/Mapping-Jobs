@@ -26,11 +26,13 @@ app.use(bodyParser.json());
 // serve static assets normally
 app.use(express.static(__dirname));
 
-app.use('/tests', testRoutes);
+// app.use('/tests', testRoutes);
 
-_.forEach(routes, function(value){
-  app.use('/', value);
-});
+// _.forEach(routes, function(value){
+//   app.use('/', value);
+// });
+
+var port = process.env.PORT || 3000;
 
 
 app.use(express.static(__dirname + '/app'));
@@ -39,7 +41,7 @@ app.get('/',function(req,res){
     res.sendFile('index.html',{'root': __dirname + '/app'});
 })
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log('Example app listening on port 3000!')
 })
 module.exports = app;

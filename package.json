@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "mocha",
     "setup": "npm install && npm install -g bower && bower install"
   },
