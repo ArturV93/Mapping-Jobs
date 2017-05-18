@@ -1,0 +1,31 @@
+{
+  "name": "mappingjobs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "setup": "npm install && npm install -g bower && bower install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "jsdom": "^9.11.0",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0",
+    "node-schedule": "^1.2.1",
+    "request": "^2.80.0",
+    "require-dir": "^0.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.1",
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,98 @@
+<div layout="row" layout-xs="column" layout="padding">
+  <div flex></div>
+    <md-button class="md-primary md-raised" ui-sref="stats">Click to check for Prediction of jobs grow in sector</md-button>
+</div>
+
+
+<div class="row pie-charts">
+  <div class="pie-chart-item-container" ng-repeat="chart in charts">
+    <div ba-panel>
+      <div class="pie-chart-item">
+        <div class="description">
+          <div>{{ ::chart.description }}</div>
+          <div class="description-stats">{{ ::chart.stats }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12"
+         ba-panel
+         ba-panel-title="Mapping Jobs"
+         ba-panel-class="">
+
+    <md-progress-linear class="margin-top-linear" ng-if="search" md-mode="query"></md-progress-linear>
+         <div calss="row">
+           <div class="col-lg-4 col-md-12 col-sm-12 padding-top-bottom">
+             <div class="row">
+                 <div class="col-lg-12 col-md-6 col-sm-6 input-field">
+                   <md-select ng-model="occupation.occupation">
+                     <md-option ng-value="title" ng-click="sectorJobs(title)" aria-label="sector occupation">All Sectors</md-option>
+                     <md-option ng-value="title" ng-click="sectorJobs(title)" aria-label="sector occupation" ng-if="title.careers" aria-label="sector occupations" ng-repeat="title in titles">{{title.careers}}</md-option>
+                   </md-select>
+                 </div>
+                 <div class="col-lg-12 col-md-6 col-sm-6 ">
+                    <form class="row form-inline">
+                      <md-input-container flex class="margin-left">
+                         <label class="text-black">Search Occupation</label>
+                         <input class="text-black" ng-model="occupation.search" type="occupation">
+                          <div ng-show="errorMessage">{{errorMessage}}</div>
+                       </md-input-container>
+                      <md-button ng-click="searchJobs()" class="md-raised md-primary margin-top">Search</md-button>
+                    </form>
+                 </div>
+              </div>
+          </div>
+           <div class="col-lg-8 col-md-12 col-sm-12">
+             <div id="chartdiv"></div>
+           </div>
+        </div>
+      </div>
+  </div>
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12"
+       ba-panel
+       ba-panel-title="Precentage of Available Jobs"
+       ba-panel-class="traffic-panel">
+
+     <div class="channels-block" ng-class="{'transparent': transparent}" ng-cloak>
+         <div class="chart-bg"></div>
+         <div layout="row" layout-xs="column" layout="padding">
+          <div flex="50"></div>
+         <md-select ng-model="county" class="max">
+           <md-option ng-value="title" ng-click="donughnut('')" aria-label="all sector occupations">All Counties</md-option>
+           <md-option ng-value="title" ng-click="donughnut(title)" aria-label="sector occupation" ng-if="title.county" aria-label="county" ng-repeat="title in titles">{{title.county}}</md-option>
+         </md-select>
+       </div>
+         <div class="traffic-chart" id="trafficChart">
+           <div class="canvas-holder">
+             <canvas id="chart-area" width="300" height="300"></canvas>
+             <div class="traffic-text">
+               {{total}}
+               <span>Total number of jobs</span>
+             </div>
+           </div>
+         </div>
+
+           <div class="channels-info">
+               <div>
+                   <div class="channels-info-item" ng-repeat="label in doughnutData.labels"
+                        ng-init="i = $index; data = doughnutData.datasets[0]">
+                       <div class="legend-color" style="background-color: {{::data.backgroundColor[i]}}"></div>
+                       <p>{{::label}}<span class="channel-number">+{{data.percentage[i]}}%</span></p>
+                       <div class="progress progress-sm channel-progress">
+                           <div class="progress-bar " role="progressbar"
+                                aria-valuenow="{{data.percentage[i]}}" aria-valuemin="0" aria-valuemax="100"
+                                style="width: {{item.percentage}}%">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+  </div>
+</div>

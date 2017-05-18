@@ -1,0 +1,201 @@
+.al-main{
+  margin-left: 0;
+}
+
+md-icon{
+  height: 48px;
+  width: 48px;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+md-progress-linear .md-container{
+  height: 3px;
+  margin: 0 -22px;
+}
+
+.md-button.md-primary.md-raised {
+  background-color: #27AE60;
+}
+.md-button.md-primary.md-raised:not([disabled]):hover{
+  background-color: rgba(39, 174, 96,0.7);
+}
+
+.pie-charts .description .description-stats{
+  padding-top: 16px;
+  font-size: 20px;
+}
+
+.pie-charts .description{
+  font-size: 22px;
+  padding: 10px 0 0 20px;
+}
+md-input{
+  border-color: #27AE60;
+}
+
+.font-inline{
+  display: inline;
+  font-size: 15px;
+}
+
+.margin-top-linear{
+  position: absolute;
+  margin-top: -15px;
+}
+.margin-top{
+  /*margin-top: -20px;*/
+  vertical-align: text-bottom
+}
+.max{
+  width: 100%;
+}
+
+@media (max-width: 1465px) and (min-width: 1199px){
+  .traffic-chart {
+    float: left;
+  }
+
+  .channels-info {
+    display: inline-block;
+  }
+
+}
+
+.margin-left{
+  margin-left: 15px;
+}
+.padding-top-bottom{
+  padding: 20px 0px;
+}
+
+.input-field{
+  padding-right: 150px;
+}
+
+svg .land {
+  outline: none;
+    stroke: rgba(189, 195, 199,1.0);
+
+    -webkit-transition: stroke 0.5s, stroke-width 0.5s;
+    -o-transition: stroke 0.5s, stroke-width 0.5s;
+    transition: stroke 0.5s, stroke-width 0.5s;
+}
+#chartdiv {
+  width: 100%;
+  height: 500px;
+  font-size: 11px;
+}
+
+/* ==========  Select Field Variables ========== */
+$color-black: "0,0,0";
+$select-background-color: transparent;
+$select-border-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+$select-font-size: 16px;
+$select-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+$select-padding: 4px;
+
+/* ==========  Select Field ========== */
+
+/* Style Select Field */
+select {
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: $select-padding 0;
+  font-size: $select-font-size;
+  color: $select-color;
+  border: none;
+  border-bottom: 1px solid $select-border-color;
+}
+
+/* Remove focus */
+select:focus {
+  outline: none}
+
+/* Hide label */
+.mdl-selectfield label {display: none;}
+/* Use custom arrow */
+.mdl-selectfield select {appearance: none}
+.mdl-selectfield {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+    &:after {
+        position: absolute;
+        top: 0.75em;
+        right: 0.5em;
+        /* Styling the down arrow */
+        width: 0;
+        height: 0;
+        padding: 0;
+        content: '';
+        border-left: .25em solid transparent;
+        border-right: .25em solid transparent;
+        border-top: .375em solid $select-border-color;
+        pointer-events: none;
+    }
+}
+
+html{
+  outline: none;
+}
+svg .land:hover , .land.active {
+    cursor: pointer;
+    stroke-width: 2.5;
+    stroke: rgba(189, 195, 199,1.0);
+}
+
+.pan-zoom-frame {
+  outline: none;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: auto;
+}
+
+svg path:hover , path.active { /* Amend this */
+    cursor: pointer;
+    opacity: 1;
+    /*fill: #ecf0f1;*/
+}
+
+.regionlist {
+    -webkit-column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5;
+}
+.regionlist > div {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.regionlist > div > div {
+    display: inline-block;
+    width: 48%;
+}
+.regionlist > div.active {
+    font-weight: bold;
+    background-color: lightblue;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("../../main/assets/ireland-maps.jpg");
+    /* Full height */
+    height: 50%;
+    background-color: #fff !important;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg .al-main{
+  min-height: 0px;
+  padding: 0px;
+}
+.bg .al-main .al-content{
+  padding: 0px;
+}
+
+.amcharts-chart-div a {display:none !important;}
+.ammapDescriptionWindow {display: none !important;}

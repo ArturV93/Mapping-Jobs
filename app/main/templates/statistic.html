@@ -1,0 +1,86 @@
+<div layout="row" layout-xs="column" layout="padding">
+    <div flex></div>
+    <md-button class="md-primary md-raised" ui-sref="main">Back To Map page</md-button>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12"
+       ba-panel
+       ba-panel-title="Prediction of Jobs"
+       ba-panel-class="">
+
+       <div calss="row">
+         <div class="col-lg-4 col-md-12 col-sm-12 padding-top-bottom">
+           <div class="row">
+               <div class="col-lg-12 col-md-6 col-sm-6 input-field">
+                 <label>Industry</label>
+                 <md-select ng-model="occupation.occupation" placeholder="Industry">
+                   <md-option ng-value="title" ng-click="getlastTen()" aria-label="Industry" ng-if="title.careers" ng-repeat="title in titles">{{title.careers}}</md-option>
+                 </md-select>
+               </div>
+               <div class="col-lg-12 col-md-6 col-sm-6 input-field">
+                 <label>County</label>
+                 <md-select ng-model="occupation.county" placeholder="Select County">
+                   <md-option ng-value="title" ng-click="getlastTen()" placeholder="Select a County" aria-label="county" ng-if="title.county"  ng-repeat="title in titles">{{title.county}}</md-option>
+                 </md-select>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12">
+                 <md-button ng-click="naive_bayes()" class="md-raised md-primary">Predict</md-button>
+                 <md-icon ng-if="answer.answer === 1" aria-label="Increase" md-svg-icon="/main/assets/ic_arrow_upward_black_48px.svg"></md-icon>
+                 <md-icon ng-if="answer.answer === 0" aria-label="Decrease" md-svg-icon="/main/assets/ic_arrow_downward_black_48px.svg"></md-icon>
+                 <md-icon ng-if="answer.answer !== 1 && answer.answer !== 0" aria-label="Neutral" md-svg-icon="/main/assets/ic_remove_black_48px.svg"></md-icon>
+                 <div ng-if="answer.answer === 1" class="font-inline">The {{occupation.occupation.careers}} will Increase in County {{occupation.county.county}}</div>
+                 <div ng-if="answer.answer === 0" class="font-inline">The {{occupation.occupation.careers}} will Decrease in County {{occupation.county.county}}</div>
+                 <div ng-if="answer.answer !== 1 && answer.answer !== 0" class="font-inline">Click on button to get prediction if jobs will Increase or Decrease</div>
+               </div>
+            </div>
+        </div>
+         <div class="col-lg-8 col-md-12 col-sm-12">
+           <div ng-show="results.length > 0" id="chartdiv"></div>
+         </div>
+         <div ng-if="!results" class="col-lg-8 col-md-12 col-sm-12 w3-padding-32 w3-center" >
+            <label>Select All fields to Display Line Chart</label>
+         </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12"
+       ba-panel
+       ba-panel-title="Compare Two Jobs"
+       ba-panel-class="">
+
+       <div calss="row">
+         <div class="col-lg-4 col-md-12 col-sm-12 padding-top-bottom">
+           <div class="row">
+               <div class="col-lg-12 col-md-6 col-sm-6 input-field">
+                 <label>Industry A</label>
+                 <md-select ng-model="compare.occupationA" placeholder="Select a Sector Occupation as Series A">
+                   <md-option ng-value="title" ng-click="compareTwoSectors()" aria-label="sector occupation" ng-if="title.careers" ng-repeat="title in titles">{{title.careers}}</md-option>
+                 </md-select>
+                 <md-select ng-model="compare.countyA" placeholder="Select a County as Series A">
+                   <md-option ng-value="title" ng-click="compareTwoSectors()" aria-label="county"  ng-if="title.county"  ng-repeat="title in titles">{{title.county}}</md-option>
+                 </md-select>
+               </div>
+               <div class="col-lg-12 col-md-6 col-sm-6 input-field">
+                 <label>Industry B</label>
+                 <md-select ng-model="compare.occupationB" placeholder="Select a Sector Occupation as Series B">
+                   <md-option ng-value="title" ng-click="compareTwoSectors()" aria-label="sector occupation" ng-if="title.careers" ng-repeat="title in titles">{{title.careers}}</md-option>
+                 </md-select>
+                 <md-select ng-model="compare.countyB" placeholder="Select a County as Series B">
+                   <md-option ng-value="title" ng-click="compareTwoSectors()" aria-label="county"  ng-if="title.county"  ng-repeat="title in titles">{{title.county}}</md-option>
+                 </md-select>
+               </div>
+            </div>
+          </div>
+           <div ng-if="data.length > 0" class="col-lg-8 col-md-12 col-sm-12">
+             <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+           </div>
+           <div ng-if="!data" class="col-lg-8 col-md-12 col-sm-12 w3-padding-32 w3-center" >
+              <label>Select All fields to Display Bar Chart</label>
+           </div>
+      </div>
+    </div>
+</div>

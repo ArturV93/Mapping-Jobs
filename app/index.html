@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <!-- ionic meta tags -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>My Project</title>
+
+    <!-- bower:css -->
+      <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog.css">
+      <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog-theme-default.css">
+      <!-- endinject -->
+      <link rel="stylesheet" href="/bower_components/amcharts3/amcharts/plugins/export/export.css" type="text/css" media="all" />
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+      <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+      <link rel="stylesheet" href="/app/main/styles/vendor.css">
+      <link rel="stylesheet" href="/app/main/styles/app.css">
+      <link rel="stylesheet" href="/app/main/styles/main.css">
+      <link rel="stylesheet" href="/bower_components/ngprogress/ngprogress.css">
+      <style>
+      body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+      .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+      .fa-anchor,.fa-coffee {font-size:200px}
+      </style>
+  </head>
+  <body ng-app="mappingJobs">
+
+    <main style="background-color: #F0F3F4;">
+      <div ng-class="{'al-main' : homepage}">
+        <div ng-class="{'al-content' : homepage}">
+          <div ui-view autoscroll="true" autoscroll-body-top></div>
+        </div>
+      </div>
+
+
+
+      <back-top></back-top>
+    </main>
+
+
+  <script src="/app/main/scripts/vendor.js"></script>
+  <script src="/app/main/scripts/app.js"></script>
+  <script src="/bower_components/amcharts3/amcharts/amcharts.js"></script>
+  <script src="/bower_components/amcharts3/amcharts/serial.js"></script>
+  <script src="/bower_components/ammap3/ammap/ammap.js"></script>
+  <script src="/bower_components/ammap3/ammap/themes/light.js"></script>
+  <script src="/bower_components/angular-aria/angular-aria.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-material/angular-material.js"></script>
+	<script src="/bower_components/ngprogress/build/ngprogress.js"></script>
+  <!-- inject:js -->
+  <script src="/app/app.js"></script>
+  <script src="/app/main/main.js"></script>
+  <script src="/app/main/controllers/login-ctrl.js"></script>
+  <script src="/app/main/controllers/main-ctrl.js"></script>
+  <script src="/app/main/controllers/stats-ctrl.js"></script>
+  <script src="/app/main/directive/svgMap.js"></script>
+  <script src="/app/main/services/auth.js"></script>
+  <script src="/app/main/services/main-serv.js"></script>
+  <script src="/app/main/services/stats-serv.js"></script>
+  <!-- endinject -->
+
+  </body>
+</html>
