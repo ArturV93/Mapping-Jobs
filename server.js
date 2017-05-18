@@ -16,7 +16,7 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
-connection.init();
+// connection.init();
 app.use(cookieParser());
 // configure app to use bodyParser()
 // this will let us get the data from a POST
