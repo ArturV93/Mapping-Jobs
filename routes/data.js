@@ -7,6 +7,10 @@ router.post('/API/v1/jobs', function(req,res){
     data.jobs(req,res);
 });
 
+router.post('/API/v1/hi', function(req,res){
+    res.send("Hiii");
+});
+
 router.post('/API/v1/careersInfo', function(req,res){
     data.careersInfoDonught(req,res);
 });

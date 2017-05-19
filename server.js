@@ -16,6 +16,7 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
+var port = process.env.PORT || 3000;
 // connection.init();
 app.use(cookieParser());
 // configure app to use bodyParser()
@@ -26,13 +27,12 @@ app.use(bodyParser.json());
 // serve static assets normally
 app.use(express.static(__dirname));
 
-// app.use('/tests', testRoutes);
+app.use('/tests', testRoutes);
 
-// _.forEach(routes, function(value){
-//   app.use('/', value);
-// });
+_.forEach(routes, function(value){
+  app.use('/', value);
+});
 
-var port = process.env.PORT || 3000;
 
 
 app.use(express.static(__dirname + '/app'));
