@@ -6,7 +6,7 @@
 # Ignore everything in the build directory.
 build/
 #/node_modules/
-/app/bower_components/
+# /app/bower_components/
 
 
 # SQLite3 database
