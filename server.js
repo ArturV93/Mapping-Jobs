@@ -16,8 +16,8 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
-var port = Number(process.env.PORT || 3000);
-// connection.init();
+var port = process.env.PORT || 3000;
+connection.init();
 app.use(cookieParser());
 // configure app to use bodyParser()
 // this will let us get the data from a POST
