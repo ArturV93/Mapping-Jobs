@@ -25,4 +25,14 @@ gulp.task('script', function () {
      .pipe(order(['**/**/*.js']))
      .pipe(concat('vendors.js'))
      .pipe(gulp.dest('app/main/scripts/'));
+});
+
+gulp.task('css', function () {
+  var vendors = mainbowerFiles();
+
+  return gulp.src(vendors)
+     .pipe(filter('**/*.css'))
+     .pipe(order(['**/**/*.css']))
+     .pipe(concat('bower.css'))
+     .pipe(gulp.dest('app/main/styles/'));
 })
