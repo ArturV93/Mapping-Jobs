@@ -5,7 +5,7 @@
 *.o
 # Ignore everything in the build directory.
 build/
-/node_modules/
+#/node_modules/
 /app/bower_components/
 
 
