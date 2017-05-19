@@ -16,7 +16,7 @@ function Data() {
             if(err){
               res.send("Error")
             }
-            if(rows !== undefined){
+            if(rows.length > 0){
               var total = outliers.Outliers(rows);
               rows.forEach(function(row){
                 var salary = salaryFunc(row.salary);
@@ -39,6 +39,7 @@ function Data() {
               res.send("Error");
             }
 
+          if(rows.length > 0){
             var total = outliers.Outliers(rows);
             rows.forEach(function(row){
               var salary = salaryFunc(row.salary);
@@ -50,8 +51,10 @@ function Data() {
               });
             });
             res.send(obj);
-          })
-
+          }else{
+            res.send("Error");
+          }
+        })
       }
 
       function salaryFunc(salary){
@@ -112,14 +115,15 @@ function Data() {
               if(err){
                 callback();
               }
-
-              rows.forEach(function(row){
-                var percentage = ((row.num_jobs/obj.total)*100);
-                var round = Math.round(((percentage*100)))/100;
-                obj.labels.push(row.occupation);
-                obj.data.push(row.num_jobs);
-                obj.percentage.push(round);
-              })
+              if(rows.length > 0){
+                rows.forEach(function(row){
+                  var percentage = ((row.num_jobs/obj.total)*100);
+                  var round = Math.round(((percentage*100)))/100;
+                  obj.labels.push(row.occupation);
+                  obj.data.push(row.num_jobs);
+                  obj.percentage.push(round);
+                })
+              }
 
               callback();
             })

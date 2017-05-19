@@ -10,12 +10,13 @@ function List() {
 
       function county(callback){
         con.query("SELECT DISTINCT(county) FROM jobs", function(err, rows) {
-
-          rows.forEach(function(row){
-            array.push({
-              county: row.county
-            })
-          });
+          if(rows.length > 0){
+            rows.forEach(function(row){
+              array.push({
+                county: row.county
+              })
+            });
+          }
 
           callback();
         });
@@ -23,12 +24,13 @@ function List() {
 
       function careers(callback){
         con.query("SELECT DISTINCT(occupation) FROM jobs", function(err, rows) {
-          rows.forEach(function(row){
-            array.push({
-              careers: row.occupation
-            })
-          });
-
+          if(rows.length > 0){
+            rows.forEach(function(row){
+              array.push({
+                careers: row.occupation
+              })
+            });
+        }
           callback();
 
         });

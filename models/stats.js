@@ -18,13 +18,14 @@ function Stats() {
       }
 
       con.query(allDaysQuery, function(err, rows) {
-        rows.forEach(function(row){
-
-          result.push({
-            visits: row.num_jobs,
-            date: row.datetime
+        if(rows.length > 0){
+          rows.forEach(function(row){
+            result.push({
+              visits: row.num_jobs,
+              date: row.datetime
+            })
           })
-        })
+        }
 
         res.send(result);
       })
@@ -42,23 +43,29 @@ function Stats() {
 
       function firstQueryFunction(callback){
         con.query(lasttendays, [careers], function(err,rows){
-          rows.forEach(function(row){
-            array.push({
-              county: row.county,
-              num_jobs: row.num_jobs,
-              rate: row.rate
+
+          if(rows.length > 0){
+            rows.forEach(function(row){
+              array.push({
+                county: row.county,
+                num_jobs: row.num_jobs,
+                rate: row.rate
+              })
             })
-          })
+          }
+
           callback();
         })
       }
 
       function secondQueryFunction(callback){
           con.query(predict,[careers,county], function(err,rows){
+            if(rows.length > 0){
 
-            todayDate = {
-              county: rows[0].county,
-              num_jobs: rows[0].num_jobs
+              todayDate = {
+                county: rows[0].county,
+                num_jobs: rows[0].num_jobs
+              }
             }
             callback();
           })
@@ -93,24 +100,28 @@ function Stats() {
 
       function firstQueryFunction(callback){
         con.query(seriesA, [occupationA, countyA], function(err,rows){
-          rows.forEach(function(row){
-            seriesAarr.county.push(row.county);
-            seriesAarr.num_jobs.push(row.num_jobs);
-            seriesAarr.datetime.push(moment(row.datetime).format('MMMM Do'));
-            seriesAarr.salary.push((row.salary));
-          })
+          if(rows.length > 0){
+            rows.forEach(function(row){
+              seriesAarr.county.push(row.county);
+              seriesAarr.num_jobs.push(row.num_jobs);
+              seriesAarr.datetime.push(moment(row.datetime).format('MMMM Do'));
+              seriesAarr.salary.push((row.salary));
+            })
+          }
           callback();
         })
       }
 
       function secondQueryFunction(callback){
           con.query(seriesB, [occupationB, countyB], function(err,rows){
-            rows.forEach(function(row){
-              seriesBarr.county.push(row.county);
-              seriesBarr.num_jobs.push(row.num_jobs);
-              seriesBarr.datetime.push(moment(row.datetime).format('MMMM Do'));
-              seriesBarr.salary.push((row.salary));
-            })
+            if(rows.length > 0){
+              rows.forEach(function(row){
+                seriesBarr.county.push(row.county);
+                seriesBarr.num_jobs.push(row.num_jobs);
+                seriesBarr.datetime.push(moment(row.datetime).format('MMMM Do'));
+                seriesBarr.salary.push((row.salary));
+              })
+            }
             callback();
           })
       }
@@ -119,7 +130,7 @@ function Stats() {
              firstQueryFunction,
              secondQueryFunction
          ], function (err, result) {
-           
+
             var output = {
               labels: seriesAarr.datetime,
               data: [seriesAarr.num_jobs, seriesBarr.num_jobs]
