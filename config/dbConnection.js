@@ -6,7 +6,7 @@ function Connection() {
   this.init = function() {
     this.pool = mysql.createPool({
       connectionLimit: 100,
-      host: 'localhost',
+      host: 'eu-cdbr-west-01.cleardb.com',
       user: 'b5e257b31bd185',
       password: 'bccad01c',
       database: 'mappingjobs'
