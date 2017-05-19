@@ -9,7 +9,7 @@ function Connection() {
       host: 'eu-cdbr-west-01.cleardb.com',
       user: 'b5e257b31bd185',
       password: 'bccad01c',
-      database: 'mappingjobs'
+      database: 'heroku_9e20d23bc8e3b8e'
     });
   };
 
