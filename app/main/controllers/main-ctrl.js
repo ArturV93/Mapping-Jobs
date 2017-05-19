@@ -88,7 +88,8 @@ angular.module('main')
               $scope.search = false;
 
             }, function(err){
-              $scope.errorMessage = "Sorry, Refresh page and try again"
+              $scope.errorMessage = "Sorry, Refresh page and try again";
+              $scope.search = false;
             })
           }, 3000);
         }
