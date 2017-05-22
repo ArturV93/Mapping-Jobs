@@ -11,7 +11,7 @@ function Data() {
       var total = 0;
 
       if(req.body.occupation !== undefined && req.body.occupation !== ''){
-        var occupation = "SELECT * FROM jobs where occupation='" + req.body.occupation + "' AND DATE(datetime) = date('2017-04-11') ORDER BY num_jobs";
+        var occupation = "SELECT * FROM jobs where occupation='" + req.body.occupation + "' AND DATE(datetime) = date(curdate()) ORDER BY num_jobs";
         con.query(occupation, function(err, rows) {
             if(err){
               res.send("Error")
@@ -32,7 +32,7 @@ function Data() {
          })
       }
       else{
-        var occupation = "SELECT county, sum(num_jobs) as num_jobs, AVG(salary) as salary FROM jobs where DATE(datetime) = date('2017-04-11') GROUP BY county ORDER BY num_jobs";
+        var occupation = "SELECT county, sum(num_jobs) as num_jobs, AVG(salary) as salary FROM jobs where DATE(datetime) = date(curdate()) GROUP BY county ORDER BY num_jobs";
 
         con.query(occupation, function(err, rows) {
             if(err){
