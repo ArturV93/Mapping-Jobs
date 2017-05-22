@@ -13,7 +13,7 @@ angular.module('main')
     if(data.avgSalary === 0){
       var salary = 'Not Available';
     }else{
-      var salary = data.avgSalary;
+      var salary = "€" + data.avgSalary;
     }
 
      $scope.charts = [{
