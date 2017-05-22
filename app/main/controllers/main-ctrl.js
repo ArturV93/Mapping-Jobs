@@ -61,7 +61,8 @@ angular.module('main')
              "valueLegend": {
                "right": 10,
                "minValue": "little",
-               "maxValue": "a lot!"
+               "maxValue": "a lot!",
+               "valueText": "Jobs scale"
              },
         });
 
