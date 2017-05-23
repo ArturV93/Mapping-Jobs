@@ -40,7 +40,7 @@
                          <input class="text-black" ng-model="occupation.search" type="occupation">
                           <div ng-show="errorMessage">{{errorMessage}}</div>
                        </md-input-container>
-                      <md-button ng-click="searchJobs()" class="md-raised md-primary margin-top">Search</md-button>
+                      <md-button ng-click="searchJobs()" ng-disaled="!search" class="md-raised md-primary margin-top">Search</md-button>
                     </form>
                  </div>
               </div>
