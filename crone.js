@@ -261,16 +261,22 @@ schedule.scheduleJob( rule2, function(){
           } else {
             var $ = cheerio.load(body);
             var total = ($('div.job-options.sort-job label').eq(0).text());
-            var salary = ($('div.refine-option').text());
-            var avgSalary = 0;
-            total = parseInt(total.replace(/[^0-9\.]+/g, ""));
-            salary = salary.match(/\€(\d+)/g);
-             _.forEach(salary, function (value){
-               value = parseInt(value.replace(/\D+/g,''));
-               avgSalary += value;
-             })
-            if(salary !== null){
-              avgSalary = Math.round((avgSalary/salary.length)/1000)*1000;
+            //get from each card
+            ($('ul.job-overview')).each(function(i,elm){
+                  var salary = ($(elm).find('li.salary').eq(0).text());
+                  var a = salary.split(/[ -]+/);
+
+                   _.forEach(a, function (value){
+                     value = parseInt(value.replace(/\D+/g,''));
+                     if(!isNaN(value)){
+                       avgSalary.push(value);
+                     }
+                   })
+
+            });
+
+            if(avgSalary.length > 0){
+              avgSalary = Math.round((_.sum(avgSalary)/avgSalary.length)/1000)*1000;
             }else{
               avgSalary = 0;
             }
