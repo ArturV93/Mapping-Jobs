@@ -233,7 +233,7 @@ schedule.scheduleJob( rule2, function(){
 
   categoryIrjobs.forEach( function(occupation){
     for(var key in regionIrJobs){
-        var url = 'http://www.irishjobs.ie/ShowResults.aspx?Keywords=&Location='+ regionIrJobs[key] + '&Category=' + occupation.irjobs + '&Recruiter=Company&Recruiter=Agency';
+        var url = 'http://www.irishjobs.ie/ShowResults.aspx?Keywords=&Location='+ regionIrJobs[key] + '&Category=' + occupation.irjobs + '&Recruiter=Company&Recruiter=Agency&PerPage=100';
           urls.push({
             category: occupation.name,
             url: url,
@@ -262,6 +262,8 @@ schedule.scheduleJob( rule2, function(){
             var $ = cheerio.load(body);
             var total = ($('div.job-options.sort-job label').eq(0).text());
             //get from each card
+            var avgSalary = [];
+            var value = 0;
             ($('ul.job-overview')).each(function(i,elm){
                   var salary = ($(elm).find('li.salary').eq(0).text());
                   var a = salary.split(/[ -]+/);

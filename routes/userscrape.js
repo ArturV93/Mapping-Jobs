@@ -125,23 +125,15 @@ router.post('/API/v1/scrape', function(req,res){
           else{
             var total = ($('div.job-options.sort-job label').eq(0).text());
             var salary = ($('div.refine-option').text());
+            var avgSalary = 0;
             total = parseInt(total.replace(/[^0-9\.]+/g, ""));
-            //get from each card
-            ($('ul.job-overview')).each(function(i,elm){
-                  var salary = ($(elm).find('li.salary').eq(0).text());
-                  var a = salary.split(/[ -]+/);
-
-                   _.forEach(a, function (value){
-                     value = parseInt(value.replace(/\D+/g,''));
-                     if(!isNaN(value)){
-                       avgSalary.push(value);
-                     }
-                   })
-
-            });
-
-            if(avgSalary.length > 0){
-              avgSalary = Math.round((_.sum(avgSalary)/avgSalary.length)/1000)*1000;
+            salary = salary.match(/\€(\d+)/g);
+             _.forEach(salary, function (value){
+               value = parseInt(value.replace(/\D+/g,''));
+               avgSalary += value;
+             })
+             if(salary){
+               avgSalary = Math.round((avgSalary/salary.length)/1000)*1000;
              }
 
             results.push({
