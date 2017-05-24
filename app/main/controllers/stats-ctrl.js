@@ -7,7 +7,7 @@ angular.module('main')
     occupation: ''
   };
   $scope.compare = {countyA: '', countyB: ''};
-
+  //Get all data for hstorical graph
   $scope.getlastTen = function(){
     $timeout(function () {
       $scope.answer = {};
@@ -20,7 +20,7 @@ angular.module('main')
       }
     }, 10);
   }
-
+  //call for making the prediction
   $scope.naive_bayes = function(){
     if($scope.occupation.occupation.careers && $scope.occupation.county.county){
       Stats.getNaiveBayes($scope.occupation).then(function(results){
@@ -29,10 +29,12 @@ angular.module('main')
     }
   }
 
+  //getting titles
   Main.getTitles().then(function(data){
       $scope.titles = data;
   })
 
+//comparing two industry between each other
 $scope.compareTwoSectors = function(){
   $timeout(function () {
     if($scope.compare.countyA.county && $scope.compare.countyB.county && $scope.compare.occupationA.careers && $scope.compare.occupationB.careers){
