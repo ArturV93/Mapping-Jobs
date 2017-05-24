@@ -125,8 +125,8 @@ function Crone(){
   rule2.minute = 26;
 
   var newdata = new schedule.RecurrenceRule();
-  newdata.hour = 13;
-  newdata.minute = 35;
+  newdata.hour = 01;
+  newdata.minute = 00;
 
 schedule.scheduleJob(newdata, function(){
 
