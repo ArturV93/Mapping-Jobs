@@ -117,15 +117,15 @@ var regionIrJobs = {
 function Crone(){
 
   var rule = new schedule.RecurrenceRule();
-  rule.hour = 00;
-  rule.minute = 06;
+  rule.hour = 02;
+  rule.minute = 30;
 
   var rule2 = new schedule.RecurrenceRule();
-  rule2.hour = 00;
-  rule2.minute = 26;
+  rule2.hour = 02;
+  rule2.minute = 30;
 
   var newdata = new schedule.RecurrenceRule();
-  newdata.hour = 01;
+  newdata.hour = 03;
   newdata.minute = 00;
 
 schedule.scheduleJob(newdata, function(){
