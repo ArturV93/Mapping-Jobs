@@ -4,6 +4,8 @@ var async = require('async');
 var request = require('request');
 var cheerio = require('cheerio');
 var _ = require('lodash');
+var connection = require('./config/dbConnection');
+connection.init();
 
 var category = [
   {jobsIe:'architecture_design', name:'Arts, Audio/Video Technology and Communications'},
@@ -117,15 +119,15 @@ var regionIrJobs = {
 function Crone(){
 
   var rule = new schedule.RecurrenceRule();
-  rule.hour = 02;
+  rule.hour = 18;
   rule.minute = 38;
 
   var rule2 = new schedule.RecurrenceRule();
-  rule2.hour = 02;
+  rule2.hour = 18;
   rule2.minute = 38;
 
   var newdata = new schedule.RecurrenceRule();
-  newdata.hour = 03;
+  newdata.hour = 19;
   newdata.minute = 00;
 
 schedule.scheduleJob(newdata, function(){
