@@ -8,7 +8,7 @@ function Connection() {
       connectionLimit: 100,
       host: 'eu-cdbr-west-01.cleardb.com',
       user: 'b5e257b31bd185',
-      password: 'bccad01c',
+      password: 'a750062ed0964b7',
       database: 'heroku_9e20d23bc8e3b8e'
     });
   };
