@@ -118,11 +118,11 @@ function Crone(){
 
   var rule = new schedule.RecurrenceRule();
   rule.hour = 02;
-  rule.minute = 30;
+  rule.minute = 38;
 
   var rule2 = new schedule.RecurrenceRule();
   rule2.hour = 02;
-  rule2.minute = 30;
+  rule2.minute = 38;
 
   var newdata = new schedule.RecurrenceRule();
   newdata.hour = 03;
